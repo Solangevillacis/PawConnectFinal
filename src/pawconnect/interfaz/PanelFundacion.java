@@ -608,7 +608,7 @@ public class PanelFundacion extends JPanel {
         }
         try {
             app.darGestorMascotas().aceptarAdopcion( campoIdMascotaConsulta.getText().trim(), seleccionado.darCedula(),
-                    app.darGestorUsuarios() );
+                    app.darGestorUsuarios(), app.darGestorFundaciones() );
             app.darFundacionActiva().registrarAdopcionExitosa();
             refrescarListaMascotas();
             modeloInteresados.clear();

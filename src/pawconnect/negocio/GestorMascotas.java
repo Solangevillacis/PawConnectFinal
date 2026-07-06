@@ -2,6 +2,7 @@ package pawconnect.negocio;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import pawconnect.modelo.Fundacion;
 import pawconnect.modelo.Mascota;
 import pawconnect.modelo.Usuario;
 
@@ -152,7 +153,8 @@ public class GestorMascotas {
      * Acepta la adopcion de la mascota por parte del usuario elegido. El resto de interesados
      * reciben una notificacion de rechazo y el elegido una notificacion de aceptacion.
      */
-    public void aceptarAdopcion( String idMascota, String cedulaUsuarioElegido, GestorUsuarios gestorUsuarios ) throws Exception {
+    public void aceptarAdopcion( String idMascota, String cedulaUsuarioElegido, GestorUsuarios gestorUsuarios,
+                                  GestorFundaciones gestorFundaciones ) throws Exception {
         Mascota m = buscarMascota( idMascota );
         if ( m == null ) {
             throw new Exception( "No existe una mascota con ese identificador." );
@@ -162,13 +164,18 @@ public class GestorMascotas {
         }
         m.marcarAdoptada();
 
+        Fundacion f = gestorFundaciones.buscarFundacion( m.darCedulaFundacion() );
+        String correoFundacion = f == null ? "la fundacion" : f.darCorreo();
+
         for ( String cedulaInteresado : m.darInteresados() ) {
             Usuario u = gestorUsuarios.buscarUsuario( cedulaInteresado );
             if ( u == null ) {
                 continue;
             }
             if ( cedulaInteresado.equals( cedulaUsuarioElegido ) ) {
-                u.agregarNotificacion( "Tu solicitud de adopcion para " + m.darNombre() + " fue aceptada." );
+                u.agregarNotificacion( "¡Felicidades! Tu solicitud de adopcion para " + m.darNombre()
+                        + " fue aceptada. Contactate a " + correoFundacion
+                        + " para organizar la visita y los documentos de adopcion responsable." );
             } else {
                 u.agregarNotificacion( "Tu solicitud de adopcion para " + m.darNombre() + " fue rechazada." );
             }

@@ -1,0 +1,2 @@
+DON1|1751564954|1791749677001|50.0|Aporte a campana: Esterilización de mascotas|CAMP1
+DON2|1716921174|1791749677001|50.0|Aporte a campana: Esterilización de mascotas|CAMP1

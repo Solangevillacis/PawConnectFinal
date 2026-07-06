@@ -1,1 +1,2 @@
-1751564954|Solange Villacís|solange.villacis@gmail.com|Solange2007|0998975619|Av.Martha Bucaram|1000.0|true|true|Casa|4|3.0|0.0|
+1751564954|Solange Villacís|solange.villacis@gmail.com|Solange2007|0998975619|Av.Martha Bucaram|1000.0|true|true|Casa|4|3.0|50.0|
+1716921174|Sara Navarrete|sary.navarrete@hotmail.com|Sary1985|0995033802|Quitumbe|2000.0|true|true|Casa|4|4.0|50.0|
